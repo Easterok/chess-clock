@@ -1,6 +1,6 @@
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker
-      .register('/sw.js')
+      .register('/chess-clock/sw.js')
   }
 
 
