@@ -10,6 +10,12 @@ let timeBank = Array.from(players).map(() => 10 * 60 * 1000);
 let start = null;
 let playerStartTime = null;
 
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker
+    .register('/chess-clock/sw.js')
+    .then(() => { console.log('Service Worker Registered'); });
+}
+
 function render(timestamp) {
     if (activePlayerIndex === null) {
         return;
