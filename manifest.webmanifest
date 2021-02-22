@@ -1,0 +1,10 @@
+{
+    "background_color": "purple",
+    "description": "Chess clock",
+    "display": "fullscreen",
+    "icons": [
+    ],
+    "name": "Chess clock",
+    "short_name": "Chess cock",
+    "start_url": "/index.html"
+  }

@@ -1,3 +1,9 @@
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker
+      .register('/sw.js')
+  }
+
+
 const timers = document.querySelectorAll('.js-time');
 
 const players = document.querySelectorAll('.player');
