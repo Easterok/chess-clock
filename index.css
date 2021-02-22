@@ -1,0 +1,43 @@
+html, body {
+    height: 100vh;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #333333;
+    color: #ffffff;
+    font-size: 72px;
+
+    height: 3000px;
+}
+
+.main {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.player {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    transition: 0.2s ease;
+}
+
+.player:hover .time {
+    color: yellow;
+}
+
+.player:active {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.reset {
+    position: absolute;
+    top: 0; 
+    right: 0;
+}
