@@ -4,7 +4,10 @@ self.addEventListener('install', (e) => {
         '/chess-clock/',
         '/chess-clock/index.html',
         '/chess-clock/index.js',
-        '/chess-clock/index.css'
+        '/chess-clock/index.css',
+        '/chess-clock/icon/arrow.svg',
+        '/chess-clock/icon/close.svg',
+        '/chess-clock/icon/refresh.svg',
       ])),
     );
   });
