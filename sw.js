@@ -1,20 +1,56 @@
-self.addEventListener('install', (e) => {
-    e.waitUntil(
-      caches.open('chess-clock-store').then((cache) => cache.addAll([
-        '/chess-clock/',
-        '/chess-clock/index.html',
-        '/chess-clock/index.js',
-        '/chess-clock/index.css',
-        '/chess-clock/icon/arrow.svg',
-        '/chess-clock/icon/close.svg',
-        '/chess-clock/icon/refresh.svg',
-      ])),
-    );
+CACHE = 'chess-clock-store'
+
+self.addEventListener('install', function(evt) {
+  console.log('The service worker is being installed.');
+ 
+  evt.waitUntil(caches.open(CACHE).then(function (cache) {
+    cache.addAll([
+      '/chess-clock/',
+      '/chess-clock/index.html',
+      '/chess-clock/index.js',
+      '/chess-clock/index.css',
+      '/chess-clock/icon/arrow.svg',
+      '/chess-clock/icon/close.svg',
+      '/chess-clock/icon/refresh.svg',
+    ])
+  }));
+});
+ 
+self.addEventListener('fetch', function(evt) {
+  console.log('The service worker is serving the asset.');
+  evt.respondWith(fromCache(evt.request));
+ 
+  evt.waitUntil(
+    update(evt.request)
+    .then(refresh)
+  );
+});
+ 
+function fromCache(request) {
+  return caches.open(CACHE).then(function (cache) {
+    return cache.match(request);
   });
-  
-  self.addEventListener('fetch', (e) => {
-    console.log(e.request.url);
-    e.respondWith(
-      caches.match(e.request).then((response) => response || fetch(e.request)),
-    );
+}
+ 
+function update(request) {
+  return caches.open(CACHE).then(function (cache) {
+    return fetch(request).then(function (response) {
+      return cache.put(request, response.clone()).then(function () {
+        return response;
+      });
+    });
   });
+}
+
+function refresh(response) {
+  return self.clients.matchAll().then(function (clients) {
+    clients.forEach(function (client) {
+      var message = {
+        type: 'refresh',
+        url: response.url,
+        eTag: response.headers.get('ETag')
+      };
+      client.postMessage(JSON.stringify(message));
+    });
+  });
+}
