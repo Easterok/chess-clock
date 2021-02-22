@@ -8,7 +8,6 @@ body {
     box-sizing: border-box;
     background-color: #333333;
     color: #ffffff;
-    font-size: 72px;
 }
 
 .main {
@@ -24,6 +23,7 @@ body {
     justify-content: center;
     align-items: center;
     transition: 0.2s ease;
+    font-size: 20em;
 }
 
 .player:first-child {
@@ -36,14 +36,14 @@ body {
 
 .icon_reset {
     position: absolute;
-    top: 0; 
-    right: 0;
+    top: 32px; 
+    right: 32px;
 }
 
 .icon {
     opacity: 0.5;
-    width: 64px;
-    height: 64px;
+    width: 128px;
+    height: 128px;
     transition: opacity 0.2s ease;
     cursor: pointer;
 }
@@ -58,16 +58,15 @@ body {
 
 .icon_sidebar {
     position: absolute;
-    left: 0;
+    left: 32px;
     top: 50%;
     transform: translateY(-50%);
 }
 
 .icon_sidebar-close {
     position: absolute;
-    right: 0;
-    top: 0;
-    transform: rotate(-180deg);
+    top: 32px; 
+    right: 32px;
 }
 
 .sidebar {
@@ -123,7 +122,7 @@ body {
     box-sizing: border-box;
     border-radius: 8px;
     padding: 0 16px;
-    font-size: 64px;
+    font-size: 128px;
     transition: all 0.2s ease;
 }
 
@@ -134,8 +133,10 @@ body {
 }
 
 .form {
-    margin: 64px 0;
-    height: calc(100% - 128px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
 }
 
 .form__control {
