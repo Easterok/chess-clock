@@ -1,10 +1,15 @@
 {
-    "background_color": "purple",
-    "description": "Chess clock",
-    "display": "fullscreen",
-    "icons": [
-    ],
-    "name": "Chess clock",
-    "short_name": "Chess cock",
-    "start_url": "/index.html"
-  }
+  "background_color": "purple",
+  "description": "Chess Cock",
+  "display": "fullscreen",
+  "icons": [
+    {
+      "src": "icon/icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "name": "Awesome",
+  "short_name": "ChessCock",
+  "start_url": "/chess-clock/index.html"
+}

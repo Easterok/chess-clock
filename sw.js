@@ -1,6 +1,6 @@
 self.addEventListener('install', (e) => {
     e.waitUntil(
-      caches.open('chess-clock').then((cache) => cache.addAll([
+      caches.open('chess-clock-store').then((cache) => cache.addAll([
         '/chess-clock/',
         '/chess-clock/index.html',
         '/chess-clock/index.js',
