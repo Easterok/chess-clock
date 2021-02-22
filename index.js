@@ -1,77 +1,102 @@
-const timers = document.querySelectorAll('.js-time');
-
-const players = document.querySelectorAll('.player');
+const timers = document.querySelectorAll(".js-time");
+const body = document.querySelector("body");
+const players = document.querySelectorAll(".player");
 
 let activePlayerIndex = null;
 let activePlayerInterval = null;
-
-let timeBank = Array.from(players).map(() => 10 * 60 * 1000);
+let gameTime = 10 * 60 * 1000;
+let timeBank = Array.from(players).map(() => gameTime);
 
 let start = null;
 let playerStartTime = null;
+let walkTime = 0;
 
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker
-    .register('/chess-clock/sw.js')
-    .then();
+resetGameTime();
+
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("/chess-clock/sw.js").then();
 }
 
 function render(timestamp) {
-    if (activePlayerIndex === null) {
-        return;
-    }
-    
-    if (start === null) {
-        start = timestamp;
-    }
+  if (activePlayerIndex === null) {
+    return;
+  }
 
-    const diff = timestamp - start;
-    const newTime = playerStartTime - diff;
+  if (start === null) {
+    start = timestamp;
+  }
 
-    timeBank[activePlayerIndex] = newTime;
-    timers[activePlayerIndex].textContent = `${new Date(newTime).getMinutes()}:${new Date(newTime).getSeconds()}`;
+  const diff = timestamp - start;
+  const newTime = playerStartTime - diff;
 
-    window.requestAnimationFrame(render);
+  timeBank[activePlayerIndex] = newTime;
+  timers[activePlayerIndex].textContent = getDateString(new Date(newTime));
+
+  window.requestAnimationFrame(render);
 }
 
 players.forEach((player, index) => {
-    player.addEventListener('click', () => {
-        if (activePlayerIndex === null) {
-            window.requestAnimationFrame(render);
-        }
+  player.addEventListener("click", () => {
+    if (activePlayerIndex === null) {
+      body.classList.toggle('game_active');
+      window.requestAnimationFrame(render);
+    }
 
-        if (activePlayerIndex !== index) {
-            activePlayerIndex = index;
-            start = null;
-            playerStartTime = timeBank[index];
-        } else {
-            activePlayerIndex = null;
-        }
-    });
+    if (activePlayerIndex !== index) {
+      activePlayerIndex = index;
+      start = null;
+      timeBank[index] = timeBank[index] + walkTime;
+      playerStartTime = timeBank[index];
+    } else {
+    body.classList.toggle('game_active');
+      activePlayerIndex = null;
+    }
+  });
 });
 
+const reset = document.querySelector(".js-reset");
 
-const reset = document.querySelector('.js-reset');
+reset.addEventListener("click", () => {
+  activePlayerIndex = null;
+  start = null;
 
-reset.addEventListener('click', () => {
-    activePlayerIndex = null;
-    start = null;
-
-    timeBank = Array.from(players).map(() => 10 * 60 * 1000);
-
-    Array.from(timers).forEach((timer, index) => {
-        timer.textContent = `10:00`;
-    })
+  resetGameTime();
 });
 
 function setTime(value) {
-    console.log(value);
+  const newTime = parseInt(value) * 60 * 1000;
+  gameTime = newTime;
+
+  resetGameTime();
 }
 
 function addWalkTime(value) {
-    console.log(value);
+  walkTime = value;
 }
 
 function addTime(player, value) {
-    console.log(player, value);
+    const index = player === 'first' ? 0 : 1;
+
+    if (activePlayerIndex === index) {
+        playerStartTime += value;
+    } else {
+        timeBank[index] = timeBank[index] + value;
+
+        Array.from(timers).forEach((timer, index) => {
+            timer.textContent = getDateString(new Date(timeBank[index]));
+        });
+    }
+}
+
+function resetGameTime() {
+  timeBank = Array.from(players).map(() => gameTime);
+
+  const date = new Date(gameTime);
+  const content = getDateString(date);
+
+  Array.from(timers).forEach((timer) => (timer.textContent = content));
+}
+
+function getDateString(date) {
+  return date.toLocaleTimeString("ru").slice(3);
 }
