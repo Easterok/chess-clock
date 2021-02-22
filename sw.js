@@ -1,9 +1,10 @@
 self.addEventListener('install', (e) => {
     e.waitUntil(
       caches.open('chess-clock').then((cache) => cache.addAll([
-        '/index.html',
-        '/index.js',
-        '/index.css'
+        '/chess-clock/',
+        '/chess-clock/index.html',
+        '/chess-clock/index.js',
+        '/chess-clock/index.css'
       ])),
     );
   });
