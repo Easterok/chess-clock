@@ -1,9 +1,3 @@
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker
-      .register('/chess-clock/sw.js')
-  }
-
-
 const timers = document.querySelectorAll('.js-time');
 
 const players = document.querySelectorAll('.player');

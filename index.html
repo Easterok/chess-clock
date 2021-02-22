@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chess clock</title>
+    <link rel="canonical" href="https://easterok.github.io/chess-clock/" />
     <link rel="stylesheet" href="./index.css" />
     <link rel="manifest" href="manifest.webmanifest">
   </head>
@@ -20,5 +21,11 @@
       <button class="reset js-reset">Reset</button>
     </main>
     <script type="text/javascript" src="./index.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker
+            .register('/chess-clock/sw.js', {scope: '/chess-clock/'})
+        }
+    </script>
   </body>
 </html>
