@@ -13,7 +13,7 @@ let playerStartTime = null;
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker
     .register('/chess-clock/sw.js')
-    .then(() => { console.log('Service Worker Registered'); });
+    .then();
 }
 
 function render(timestamp) {
@@ -63,3 +63,15 @@ reset.addEventListener('click', () => {
         timer.textContent = `10:00`;
     })
 });
+
+function setTime(value) {
+    console.log(value);
+}
+
+function addWalkTime(value) {
+    console.log(value);
+}
+
+function addTime(player, value) {
+    console.log(player, value);
+}

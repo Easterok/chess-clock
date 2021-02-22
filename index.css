@@ -26,12 +26,166 @@ body {
     transition: 0.2s ease;
 }
 
+.player:first-child {
+    transform: rotate(180deg);
+}
+
 .player:active {
     background-color: rgba(255, 255, 255, 0.2);
 }
 
-.reset {
+.icon_reset {
     position: absolute;
     top: 0; 
     right: 0;
+}
+
+.icon {
+    opacity: 0.5;
+    width: 64px;
+    height: 64px;
+    transition: opacity 0.2s ease;
+    cursor: pointer;
+}
+
+.icon:hover {
+    opacity: 0.7;
+}
+
+.icon:active {
+    opacity: 1;
+}
+
+.icon_sidebar {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.icon_sidebar-close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: rotate(-180deg);
+}
+
+.sidebar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    z-index: 1;
+    transform: translateX(-100%);
+    opacity: 0;
+
+    transition: all 0.4s ease;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+}
+
+.sidebar_opened {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.sidebar_opened .sidebar__overlay {
+    opacity: 1;
+}
+
+.hide {
+    display: none;
+}
+
+.radio__native, .button {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    border-radius: inherit;
+    background: none;
+    font-size: inherit;
+    line-height: inherit;
+    font-weight: inherit;
+    color: inherit;
+    caret-color: currentColor;
+    outline: none;
+    appearance: none;
+    word-break: keep-all;
+}
+
+.radio__native {
+    transform: scale(0);
+}
+
+.radio__label {
+    border: 2px solid transparent;
+    box-sizing: border-box;
+    border-radius: 8px;
+    padding: 0 16px;
+    font-size: 64px;
+    transition: all 0.2s ease;
+}
+
+.radio__native:checked + .radio__label {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color:#c9c936;
+    box-shadow: 0 0 10px #c9c936;
+}
+
+.form {
+    margin: 64px 0;
+    height: calc(100% - 128px);
+}
+
+.form__control {
+    display: flex;
+    justify-content: center;
+}
+
+.form__control + .form__control {
+    margin-top: 64px;
+}
+
+.add-time {
+    display: none;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.buttons:first-child {
+    transform: rotate(180deg);
+}
+
+.buttons + .buttons {
+    margin-top: 32px;
+}
+
+.button {
+    height: 100%;
+    font-size: 36px;
+    transition: background-color 0.2s ease;
+}
+
+.button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.button:active {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.game_active .time-managment {
+display: none;
+}
+
+.game_active .add-time {
+    display: flex;
 }

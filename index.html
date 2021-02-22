@@ -4,8 +4,9 @@
     <meta charset="UTF-8" />
     <title>Chess clock</title>
     <link rel="stylesheet" href="index.css" />
-    <script src="index.js" defer></script>
     <link rel="manifest" href="manifest.webmanifest">
+    <script src="index.js" defer></script>
+    <script src="sidebar.js" defer></script>
   </head>
   <body>
     <main class="main">
@@ -16,7 +17,73 @@
         <div class="time js-time">10:00</div>
       </section>
 
-      <button class="reset js-reset">Reset</button>
+      <img src="icon/refresh.svg" class="icon icon_reset js-reset">
+      <img src="icon/arrow.svg" class="icon icon_sidebar js-toggle-sidebar">
+
+      <div class="sidebar js-sidebar">
+        <img src="icon/close.svg" class="icon icon_sidebar-close js-close-sidebar">
+
+        <form class="form">
+            <div class="time-managment">
+                <div class="form__control">
+                    <div class="radio">
+                        <input type="radio" value="1m" name="time" id="item1" class="radio__native" onchange="setTime(this.value)">
+                        <label for="item1" class="radio__label">1:00</label>
+                    </div>
+        
+                    <div class="radio">
+                        <input type="radio" value="3m" name="time" id="item2" class="radio__native" onchange="setTime(this.value)">
+                        <label for="item2" class="radio__label">3:00</label>
+                    </div>
+        
+                    <div class="radio">
+                        <input type="radio" value="10m" name="time" id="item3" class="radio__native" onchange="setTime(this.value)">
+                        <label for="item3" class="radio__label">10:00</label>
+                    </div>
+                </div>
+    
+                <div class="form__control">
+                    <div class="radio">
+                        <input type="radio" value="0s" name="additional" id="additional1" class="radio__native" onchange="setTime(this.value)">
+                        <label for="additional1" class="radio__label">0s</label>
+                    </div>
+        
+                    <div class="radio">
+                        <input type="radio" value="5s" name="additional" id="additional2" class="radio__native" onchange="setTime(this.value)">
+                        <label for="additional2" class="radio__label">+5s</label>
+                    </div>
+        
+                    <div class="radio">
+                        <input type="radio" value="10s" name="additional" id="additional3" class="radio__native" onchange="setTime(this.value)">
+                        <label for="additional3" class="radio__label">+10s</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="add-time">
+                <div class="buttons">
+                    <button class="button" type="button" onclick="addTime('first', 10000)">+0:10</button>
+                    <button class="button" type="button" onclick="addTime('first', 30000)">+0:30</button>
+                    <button class="button" type="button" onclick="addTime('first', 60000)">+1:00</button>
+                    <button class="button" type="button" onclick="addTime('first', 180000)">+3:00</button>
+                </div>
+    
+                <div class="buttons">
+                    <button class="button" type="button" onclick="addTime('second', 10000)">+0:10</button>
+                    <button class="button" type="button" onclick="addTime('second', 30000)">+0:30</button>
+                    <button class="button" type="button" onclick="addTime('second', 60000)">+1:00</button>
+                    <button class="button" type="button" onclick="addTime('second', 180000)">+3:00</button>
+                </div>
+            </div>
+        </form>
+      </div>
     </main>
+
+    <template id="radioTemplate">
+        <div class="radio">
+            <input type="radio" name="time" class="radio__native" onchange="setTime(this.value)">
+            <label class="radio__label"></label>
+        </div>
+    </template>
   </body>
 </html>
