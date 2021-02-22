@@ -26,10 +26,6 @@ body {
     transition: 0.2s ease;
 }
 
-.player:hover .time {
-    color: yellow;
-}
-
 .player:active {
     background-color: rgba(255, 255, 255, 0.2);
 }
