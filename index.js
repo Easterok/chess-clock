@@ -38,17 +38,17 @@ function render(timestamp) {
 players.forEach((player, index) => {
   player.addEventListener("click", () => {
     if (activePlayerIndex === null) {
-      body.classList.toggle('game_active');
+      body.classList.toggle("game_active");
       window.requestAnimationFrame(render);
     }
 
-    if (activePlayerIndex !== index) {
-      activePlayerIndex = index;
+    if (activePlayerIndex === index) {
+      activePlayerIndex = 1 - index;
       start = null;
-      timeBank[index] = timeBank[index] + walkTime;
-      playerStartTime = timeBank[index];
+      timeBank[activePlayerIndex] = timeBank[activePlayerIndex] + walkTime;
+      playerStartTime = timeBank[activePlayerIndex];
     } else {
-    body.classList.toggle('game_active');
+      body.classList.toggle("game_active");
       activePlayerIndex = null;
     }
   });
@@ -60,6 +60,7 @@ reset.addEventListener("click", () => {
   activePlayerIndex = null;
   start = null;
 
+  body.classList.toggle("game_active");
   resetGameTime();
 });
 
@@ -75,17 +76,17 @@ function addWalkTime(value) {
 }
 
 function addTime(player, value) {
-    const index = player === 'first' ? 0 : 1;
+  const index = player === "first" ? 0 : 1;
 
-    if (activePlayerIndex === index) {
-        playerStartTime += value;
-    } else {
-        timeBank[index] = timeBank[index] + value;
+  if (activePlayerIndex === index) {
+    playerStartTime += value;
+  } else {
+    timeBank[index] = timeBank[index] + value;
 
-        Array.from(timers).forEach((timer, index) => {
-            timer.textContent = getDateString(new Date(timeBank[index]));
-        });
-    }
+    Array.from(timers).forEach((timer, index) => {
+      timer.textContent = getDateString(new Date(timeBank[index]));
+    });
+  }
 }
 
 function resetGameTime() {
