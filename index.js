@@ -42,15 +42,10 @@ players.forEach((player, index) => {
       window.requestAnimationFrame(render);
     }
 
-    if (activePlayerIndex === index) {
-      activePlayerIndex = 1 - index;
-      start = null;
-      timeBank[activePlayerIndex] = timeBank[activePlayerIndex] + walkTime;
-      playerStartTime = timeBank[activePlayerIndex];
-    } else {
-      body.classList.toggle("game_active");
-      activePlayerIndex = null;
-    }
+    activePlayerIndex = 1 - index;
+    start = null;
+    timeBank[activePlayerIndex] = timeBank[activePlayerIndex] + walkTime;
+    playerStartTime = timeBank[activePlayerIndex];
   });
 });
 
