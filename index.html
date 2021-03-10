@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="UTF-8" />
     <title>Chess clock</title>
@@ -27,25 +27,37 @@
               <div class="radio">
                 <input
                   type="radio"
-                  value="1m"
+                  value="3m"
                   name="time"
                   id="item1"
                   class="radio__native"
                   onchange="setTime(this.value)"
                 />
-                <label for="item1" class="radio__label">1:00</label>
+                <label for="item1" class="radio__label">3:00</label>
               </div>
 
               <div class="radio">
                 <input
                   type="radio"
-                  value="3m"
+                  value="5m"
                   name="time"
                   id="item2"
                   class="radio__native"
                   onchange="setTime(this.value)"
                 />
-                <label for="item2" class="radio__label">3:00</label>
+                <label for="item2" class="radio__label">5:00</label>
+              </div>
+
+              <div class="radio">
+                <input
+                  type="radio"
+                  value="8m"
+                  name="time"
+                  id="item3"
+                  class="radio__native"
+                  onchange="setTime(this.value)"
+                />
+                <label for="item3" class="radio__label">8:00</label>
               </div>
 
               <div class="radio">
@@ -53,11 +65,11 @@
                   type="radio"
                   value="10m"
                   name="time"
-                  id="item3"
+                  id="item4"
                   class="radio__native"
                   onchange="setTime(this.value)"
                 />
-                <label for="item3" class="radio__label">10:00</label>
+                <label for="item4" class="radio__label">10:00</label>
               </div>
             </div>
 
@@ -164,10 +176,9 @@
             </div>
           </div>
         </form>
-        <img
-          src="icon/close.svg"
-          class="icon icon_sidebar-close js-close-sidebar"
-        />
+        <div class="icon icon_sidebar-close js-close-sidebar">
+          <img class="sidebar-close__image" src="icon/close.svg" />
+        </div>
       </div>
     </main>
   </body>

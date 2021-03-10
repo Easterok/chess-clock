@@ -66,8 +66,18 @@ body {
 
 .icon_sidebar-close {
     position: absolute;
-    top: 32px; 
-    right: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0; 
+    right: 0;
+    width: 256px;
+    height: 256px;
+}
+
+.sidebar-close__image {
+    width: 128px;
+    height: 128px;
 }
 
 .sidebar {
@@ -143,6 +153,7 @@ body {
 .form__control {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .form__control + .form__control {
