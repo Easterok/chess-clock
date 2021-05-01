@@ -43,7 +43,7 @@ players.forEach((player, index) => {
     }
 
     timeBank[activePlayerIndex] = timeBank[activePlayerIndex] + walkTime;
-    timers[activePlayerIndex] = getDateString(new Date(timeBank[activePlayerIndex]));
+    timers[activePlayerIndex].textContent = getDateString(new Date(timeBank[activePlayerIndex]));
     activePlayerIndex = 1 - index;
     start = null;
     playerStartTime = timeBank[activePlayerIndex];
