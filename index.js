@@ -44,8 +44,8 @@ players.forEach((player, index) => {
 
     activePlayerIndex = 1 - index;
     start = null;
-    timeBank[activePlayerIndex] = timeBank[1 - activePlayerIndex] + walkTime;
-    timers[activePlayerIndex].textContent = getDateString(new Date(timeBank[1 - activePlayerIndex]));
+    timeBank[index] = timeBank[index] + walkTime;
+    timers[index].textContent = getDateString(new Date(timeBank[index]));
     playerStartTime = timeBank[activePlayerIndex];
   });
 });
