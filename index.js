@@ -42,10 +42,10 @@ players.forEach((player, index) => {
       window.requestAnimationFrame(render);
     }
 
-    timeBank[activePlayerIndex] = timeBank[activePlayerIndex] + walkTime;
-    timers[activePlayerIndex].textContent = getDateString(new Date(timeBank[activePlayerIndex]));
     activePlayerIndex = 1 - index;
     start = null;
+    timeBank[activePlayerIndex] = timeBank[1 - activePlayerIndex] + walkTime;
+    timers[activePlayerIndex].textContent = getDateString(new Date(timeBank[1 - activePlayerIndex]));
     playerStartTime = timeBank[activePlayerIndex];
   });
 });
