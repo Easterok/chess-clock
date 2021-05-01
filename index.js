@@ -37,6 +37,10 @@ function render(timestamp) {
 
 players.forEach((player, index) => {
   player.addEventListener("click", () => {
+    if (activePlayerIndex !== null && index !== activePlayerIndex) {
+      return;
+    }
+    
     if (activePlayerIndex === null) {
       body.classList.toggle("game_active");
       window.requestAnimationFrame(render);
