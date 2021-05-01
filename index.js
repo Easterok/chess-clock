@@ -42,9 +42,9 @@ players.forEach((player, index) => {
       window.requestAnimationFrame(render);
     }
 
+    timeBank[activePlayerIndex] = timeBank[activePlayerIndex] + walkTime;
     activePlayerIndex = 1 - index;
     start = null;
-    timeBank[activePlayerIndex] = timeBank[activePlayerIndex] + walkTime;
     playerStartTime = timeBank[activePlayerIndex];
   });
 });
