@@ -67,7 +67,7 @@ function setTime(value) {
 }
 
 function addWalkTime(value) {
-  walkTime = value;
+  walkTime = parseInt(value);
 }
 
 function addTime(player, value) {
