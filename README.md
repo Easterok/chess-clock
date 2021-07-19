@@ -1,2 +1,2 @@
 # ChessClock PWA app
-## [link](easterok.github.io/chess-clock)
+## [link](https://easterok.github.io/chess-clock)
